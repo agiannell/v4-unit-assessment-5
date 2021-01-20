@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs'),
 
 module.exports = {
     register: async(req, res) => {
-        const { username, password, profile_pic } = req.body,
+        const { username, password } = req.body,
               db = req.app.get('db')
 
         const [foundUser] = await db.user.find_user_by_username(username);
@@ -13,6 +13,8 @@ module.exports = {
 
         const salt = bcrypt.genSaltSync(saltRounds),
               hash = bcrypt.hashSync(password, salt);
+
+        const profile_pic = `https://robohash.org/${username}.png`
               
         const [newUser] = await db.user.create_user([username, hash, profile_pic])
 

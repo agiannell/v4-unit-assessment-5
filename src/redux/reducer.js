@@ -16,10 +16,7 @@ export function updateUser(userObj) {
 export function logout() {
     return {
         type: LOGOUT_USER,
-        payload: {
-            username: '',
-            profile_pic: ''
-        }
+        payload: {}
     }
 }
 
@@ -30,8 +27,8 @@ export default function reducer(state = initialState, action) {
         case UPDATE_USER:
             const { username, profile_pic } = payload;
             return { ...state, username, profile_pic };
-            case LOGOUT_USER:
-            return { ...state, username, profile_pic};
+        case LOGOUT_USER:
+            return state;
         default:
             return state;
     }

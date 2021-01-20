@@ -3,9 +3,6 @@ import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateUser, logout } from '../../redux/reducer';
-import Dash from './../Dash/Dash';
-import Form from './../Form/Form';
-import Auth from './../Auth/Auth';
 import homeLogo from './../../assets/home_logo.png';
 import newLogo from './../../assets/new_logo.png';
 import logoutLogo from './../../assets/shut_down.png';
@@ -25,12 +22,14 @@ class Nav extends Component {
 
   getUser() {
     axios.get('/api/auth/me')
-    .then(res => this.props.updateUser(res.data))
+      .then(res => this.props.updateUser(res.data))
+      .catch(err => console.log(err));
   }
   
   logout() {
-    axios.post('/api/auth/logout')
+    axios.delete('/api/auth/logout')
       .then(_ => this.props.logout())
+      .catch(err => console.log(err));
   }
   
   render() {
@@ -44,10 +43,12 @@ class Nav extends Component {
           <p>{username}</p>
         </div>
         <div className='nav-links'>
-          <Link to={ Dash }><img className='nav-img' src={ homeLogo } alt='home' /></Link>
-          <Link to={ Form }><img className='nav-img' src={ newLogo } alt='new post' /></Link>
+          <Link to='/dash'><img className='nav-img' src={ homeLogo } alt='home' /></Link>
+          <Link to='/form'><img className='nav-img' src={ newLogo } alt='new post' /></Link>
         </div>
-        <Link to={ Auth } onClick={ logout }><img className='nav-img logout' src={ logoutLogo } alt='logout' /></Link>
+        <Link onClick={ logout } to='/'>
+          <img className='nav-img logout' src={ logoutLogo } alt='logout' />
+        </Link>
       </div>
   }
 }

@@ -24,10 +24,9 @@ class Auth extends Component {
   }
 
   login() {
-    const { username, profile_pic } = this.props;
     axios.post('/api/auth/login', this.state)
     .then(res => {
-      this.props.updateUser({ username, profile_pic })
+      this.props.updateUser(res.data)
       this.props.history.push('/dash')
     })
     .catch(err => {
@@ -37,10 +36,9 @@ class Auth extends Component {
   }
   
   register() {
-    const { username, profile_pic } = this.props;
     axios.post('/api/auth/register', this.state)
     .then(res => {
-      this.props.updateUser({ username, profile_pic })
+      this.props.updateUser(res.data)
       this.props.history.push('/dash')
       })
       .catch(err => {
