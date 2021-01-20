@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import noImage from './../../assets/no_image.jpg';
 import './Post.css';
@@ -40,6 +41,7 @@ class Post extends Component {
                 <img src={this.state.author_pic} alt='author' />
               </div>
             </div>
+            <Link to='/dash'><button className='dark-button'>Back</button></Link>
             <div className='post-content-box'>
               <img className='post-img' src={imgSrc} alt='post' />
               <p>{this.state.content}</p>
@@ -47,8 +49,8 @@ class Post extends Component {
           </div>
           :
           !this.state.loading
-            ?
-            <div className='oops-box'>
+          ?
+          <div className='oops-box'>
               <h2 className='title'>Oops!</h2>
               <p>Looks like this post doesn't exist anymore</p>
             </div>

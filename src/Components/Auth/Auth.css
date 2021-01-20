@@ -12,6 +12,7 @@
   }
   
   .auth-container {
+    /* border: 2px dotted red; */
     border-radius: 8px;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
     background-image: linear-gradient(97deg, #ff7a6e, #Ffd670);
@@ -26,6 +27,7 @@
   }
 
   .auth-title {
+    /* border: 2px dotted red; */
     font-size: 80px;
     font-weight: 700;
   }
@@ -49,6 +51,7 @@
   }
   
   .auth-input-box {
+    /* border: 2px dotted red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,7 +70,25 @@
   }
   
   .auth-button-container {
+    /* border: 2px dotted red; */
     display: flex;
     justify-content: space-around;
     width: 55%;
+  }
+
+  @media(max-width: 900px) {
+    .auth-container {
+      background-image: none;
+      box-shadow: none;
+      width: 100%;
+    }
+
+    .auth-input-box {
+      width: 245px;
+    }
+
+    .auth-button-container {
+      width: 245px;
+      justify-content: space-between;
+    }
   }

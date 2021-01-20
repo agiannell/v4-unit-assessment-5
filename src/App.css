@@ -84,3 +84,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* @media(max-width: 650px){
+  .content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+} */
