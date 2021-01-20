@@ -38,9 +38,13 @@ module.exports = {
         res.status(202).send(req.session.user);
     },
     getUser: (req, res) => {
-
+        if (!req.session.user) {
+            return res.status(404).send('user not logged in');
+        } 
+        res.status(200).send(req.session.user);
     },
     logout: (req, res) => {
-
+        req.session.destroy();
+        res.status(200).send('Logout Successful');
     }
 };
